@@ -6,7 +6,7 @@
 /*   By: zbentale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 11:54:32 by zbentale          #+#    #+#             */
-/*   Updated: 2022/12/16 23:03:52 by zbentale         ###   ########.fr       */
+/*   Updated: 2022/12/24 02:48:42 by zbentale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,26 +76,21 @@ static int	ft_end(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**ptr;
-	int		size;
 	int		r;
 	int		end;
 	int		start;
 
 	if (s[0] == '\0')
-	{
-		ft_putendl_fd("ERROR", 2);
-		exit(1);
-	}
+		error();
 	r = 0;
 	start = 0;
 	end = 0;
 	if (!s)
 		return (0);
-	size = ft_count(s, c);
-	ptr = malloc(sizeof(char *) * (size + 1));
+	ptr = malloc(sizeof(char *) * (ft_count(s, c) + 1));
 	if (!ptr)
 		return (NULL);
-	while (r < size)
+	while (r < ft_count(s, c))
 	{
 		start = ft_start(start, end, s + start + end, c);
 		end = ft_end(s + start, c);
