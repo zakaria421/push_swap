@@ -6,7 +6,7 @@
 /*   By: zbentale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 21:39:41 by zbentale          #+#    #+#             */
-/*   Updated: 2022/12/24 02:30:54 by zbentale         ###   ########.fr       */
+/*   Updated: 2022/12/25 04:48:18 by zbentale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	check_node(t_struct *st)
 	t_struct	*j;
 
 	if (st == NULL)
-		printf("NULL");
+		return (0);
 	i = st;
 	while (i)
 	{
@@ -89,6 +89,6 @@ int	check_if_sorting(t_struct *st)
 
 void	error(void)
 {
-	ft_putstr_fd("ERROR\n", 2);
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }

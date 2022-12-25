@@ -6,7 +6,7 @@
 /*   By: zbentale <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 21:48:36 by zbentale          #+#    #+#             */
-/*   Updated: 2022/12/24 02:32:56 by zbentale         ###   ########.fr       */
+/*   Updated: 2022/12/25 03:53:56 by zbentale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,17 @@ void	insertion_sort(int **arr, int length)
 	}
 }
 
-void	array_sort(t_struct *st, int **a)
+int	*array_sort(t_struct *st)
 {
 	int			i;
 	t_struct	*j;
 	int			length;
+	int			*a;
 
 	length = count_of_nodes(st);
 	i = 0;
 	j = st;
+	a = malloc(sizeof(int) * length);
 	if (!a)
 	{
 		free_stack(&st);
@@ -49,10 +51,11 @@ void	array_sort(t_struct *st, int **a)
 	}
 	while (j)
 	{
-		(*a)[i++] = j->data;
+		a[i++] = j->data;
 		j = j->link;
 	}
-	insertion_sort(a, length);
+	insertion_sort(&a, length);
+	return (a);
 }
 
 int	count_of_nodes(t_struct *aa)
